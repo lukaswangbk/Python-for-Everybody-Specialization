@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/Users/lukas/Documents/GitHub/Python-for-Everybody-Specialization/4-Using-Database-With_Python/Assignment/Week 2 Assignment 2.2 (Counting Email In database)/sql1.db" readonly="0" foreign_keys="0" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="0" synchronous="1"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="723"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,4:mainAges"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">CREATE TABLE Ages ( 
+  name VARCHAR(128), 
+  age INTEGER
+);
+DELETE FROM Ages;
+INSERT INTO Ages (name, age) VALUES ('Kaydyne', 35);
+INSERT INTO Ages (name, age) VALUES ('Corran', 38);
+INSERT INTO Ages (name, age) VALUES ('Prinay', 31);
+INSERT INTO Ages (name, age) VALUES ('Caitlyn', 13);
+INSERT INTO Ages (name, age) VALUES ('Aneshka', 37);
+INSERT INTO Ages (name, age) VALUES ('Eva', 14);
+SELECT hex(name || age) AS X FROM Ages ORDER BY X
+</sql><current_tab id="0"/></tab_sql></sqlb_project>

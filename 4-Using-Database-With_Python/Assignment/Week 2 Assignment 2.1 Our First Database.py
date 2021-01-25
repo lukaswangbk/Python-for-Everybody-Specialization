@@ -24,7 +24,7 @@ SELECT hex(name || age) AS X FROM Ages ORDER BY X
 
 Find the first row in the resulting record set and enter the long string that looks like 53656C696E613333.
 
-Answer ==> The first row in the resulting record set : 46796E3331
+Answer ==> The first row in the resulting record set : 416E6573686B613337
 """
 import sqlite3
 
@@ -43,10 +43,12 @@ cursor.execute('''
 cursor.execute('''DELETE FROM Ages''')
 
 # Insert users
-cursor.execute('''INSERT INTO Ages (name, age) VALUES ('Mara', 28)''')
-cursor.execute('''INSERT INTO Ages (name, age) VALUES ('Otto', 33)''')
-cursor.execute('''INSERT INTO Ages (name, age) VALUES ('Fyn', 31)''')
-cursor.execute('''INSERT INTO Ages (name, age) VALUES ('Neshawn', 17)''')
+cursor.execute('''INSERT INTO Ages (name, age) VALUES ('Kaydyne', 35);''')
+cursor.execute('''INSERT INTO Ages (name, age) VALUES ('Corran', 38)''')
+cursor.execute('''INSERT INTO Ages (name, age) VALUES ('Prinay', 31)''')
+cursor.execute('''INSERT INTO Ages (name, age) VALUES ('Caitlyn', 13)''')
+cursor.execute('''INSERT INTO Ages (name, age) VALUES ('Aneshka', 37)''')
+cursor.execute('''INSERT INTO Ages (name, age) VALUES ('Eva', 14)''')
 
 #Select user
 cursor.execute('''SELECT hex(name || age) AS X FROM Ages ORDER BY X''')
