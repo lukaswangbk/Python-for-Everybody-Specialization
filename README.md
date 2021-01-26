@@ -1,6 +1,6 @@
 <h1 align="center"> Python for Everybody Specialization</h1>
 
-###### *Remark: This course is part of Lukas's 2021 Coursera Machine Learning Engineer Curriculum and Preparation. For detail, please check my [notion](https://www.notion.so/2021-Coursera-Machine-Learning-Engineer-Curriculum-and-Preparation-8168ec2dabe74147a34e689c3627cf56).
+###### *Remark: This course is part of Lukas's 2021 Coursera Machine Learning Engineer Curriculum and Preparation. For detail, please check my [Notion](https://www.notion.so/2021-Coursera-Machine-Learning-Engineer-Curriculum-and-Preparation-8168ec2dabe74147a34e689c3627cf56).
 
 ## Content
 This project contains the assignments of the assignments for [Python for Everybody Specialization](https://www.coursera.org/specializations/python) course on **Cousera**
