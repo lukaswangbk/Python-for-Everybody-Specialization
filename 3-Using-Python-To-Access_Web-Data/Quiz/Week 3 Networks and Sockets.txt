@@ -29,9 +29,3 @@ http://www.dr-chuck.com/page1.htm
 
 10.Which organization publishes Internet Protocol Standards?
 ==> IETF
-
-11. In a client-server application on the web using sockets, which must come up first?
-==> server
-
-12.What do we call it when a browser uses the HTTP protocol to load a file or page from a server and display it in the browser?
-==>The Request/Response Cycle
