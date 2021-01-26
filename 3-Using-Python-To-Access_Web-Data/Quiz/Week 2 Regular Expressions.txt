@@ -2,8 +2,8 @@
 From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
 ==> @(\S+)
 
-2.Which of the following is the way we match the "start of a line" in a regular expression?
-==> ^
+2.What will the '\$' regular expression match?
+==> A dollar sign
 
 3.What would the following mean in a regular expression? [a-z0-9]
 ==> Match a lowercase letter or a digit
