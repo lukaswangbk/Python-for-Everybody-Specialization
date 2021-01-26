@@ -1,5 +1,6 @@
-#"""Exploring the HyperText Transport Protocol
+"""Exploring the HyperText Transport Protocol"""
 
+'''
 You are to retrieve the following document using the HTTP protocol in a way that you can examine the HTTP Response headers.
 
 http://data.pr4e.org/intro-short.txt
@@ -9,7 +10,7 @@ Preferred: Modify the socket1.py program to retrieve the above URL and print out
 Open the URL in a web browser with a developer console or FireBug and manually examine the headers that are returned.
 Use the telnet program as shown in lecture to retrieve the headers and content.
 Enter the header values in each of the fields below and press "Submit"."""
-
+'''
 
 # Server: Apache/2.4.18 (Ubuntu)
 # Last-Modified: Sat, 13 May 2017 11:22:22 GMT
