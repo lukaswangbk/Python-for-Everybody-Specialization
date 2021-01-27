@@ -8,18 +8,17 @@ You can download the sample data at http://www.py4e.com/code3/mbox-short.txt"""
 
 
 #Use  mbox-short.txt as File Name
-
 fname = input("Enter file name: ")
+if len(fname) < 1 : fname = "mbox-short.txt"
 
-tekst = open(fname)
+fh = open(fname)
 count = 0
-for linija in tekst:
-    if linija.startswith("From "):
-        rijeci = linija.rstrip().split()
-        email = rijeci[1]
-        print(email)
-        count +=1
-    else:
-        continue
+
+for line in fh:
+    line = line.strip()
+    if line.startswith("From "):
+        words = line.split()
+        print(words[1])
+        count += 1
 
 print("There were", count, "lines in the file with From as the first word")

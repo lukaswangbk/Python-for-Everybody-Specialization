@@ -5,7 +5,5 @@ You can download the sample data at http://www.py4e.com/code3/words.txt"""
 # Use words.txt as the file name
 fname = input("Enter file name: ")
 fh = open(fname)
-for line in fname:
-	line = line.rstrip()
-inp = fh.read()
-print(inp.upper())
+for line in fh.readlines():
+    print(line.upper().strip())

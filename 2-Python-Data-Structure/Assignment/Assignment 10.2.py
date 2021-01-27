@@ -4,18 +4,17 @@ Once you have accumulated the counts for each hour, print out the counts, sorted
 
 
 #Use mbox-short.txt File name
-
 name = input("Enter file:")
-f = open(name)
-dic = {}
-for i in f:
-    if i.startswith("From") and len(i.split()) > 2:
-        line = i.split()
-        if not dic.has_key(line[5][:2]):
-            dic[line[5][:2]] = 1
-        else:
-            dic[line[5][:2]] += 1
-                
-key = sorted(dic)
-for i in key:
-    print (i, dic[i])
+if len(name) < 1 : name = "mbox-short.txt"
+handle = open(name)
+count = dict()
+for line in handle:
+    line = line.strip()
+    if line.startswith("From "):
+        words = line.split()
+        time = words[5]
+        time = time.split(':')
+        hour = time[0]
+        count[hour] = count.get(hour,0) + 1
+for k,v in sorted(count.items()):
+    print(k,v)

@@ -4,20 +4,20 @@
 
 #Use mbox-short.txt as File name
 name = input("Enter file:")
-tekst = open(name)
-dic = {}
+if len(name) < 1 : name = "mbox-short.txt"
+handle = open(name)
 
-for lines in tekst:
-    if lines.startswith("From "):
-        words = lines.split()
-        email = words[1]
-        dic[email] = dic.get(email, 0)+1
-                   
-i = None
-j = None
+count = dict()
+for line in handle:
+    if line.startswith("From "):
+        line = line.split()
+        line = line[1]
+        count[line] = count.get(line, 0) +1
 
-for k, v in dic.items():
-    if j is None or j < v:
-        j = v
-        i = k
-print(i, j)
+bigcount = None
+bigword = None
+for k,v in count.items():
+    if bigcount is None or v > bigcount:
+        bigword = k
+        bigcount = v 
+print(bigword, bigcount)

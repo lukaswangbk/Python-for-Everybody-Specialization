@@ -2,24 +2,24 @@
 
 largest = None
 smallest = None
-
 while True:
-    inp = input("Enter a number: ")
-    if inp == "done" : break
-    try:
-        num = float(inp)
-    except:
-        print("Invalid input")
-        continue
-    if smallest is None:
-        smallest = num 
-    if num > largest :
-        largest = num
-    elif num < smallest :
-        smallest = num
-
-def done(largest,smallest):
-    print("Maximum is", int(largest))
-    print("Minimum is", int(smallest))
-
-done(largest,smallest)
+    num = input("Enter a number: ")
+    if num == "done" : break
+    else: 
+        try:
+            num = int(num)
+        except:
+            print("Invalid input")
+            continue
+        if largest is None:
+            largest = num
+        else:
+            if num > largest:
+                largest = num
+        if smallest is None:
+            smallest = num
+        else:
+            if num < smallest:
+                smallest = num
+print("Maximum is", largest)
+print("Minimum is", smallest)

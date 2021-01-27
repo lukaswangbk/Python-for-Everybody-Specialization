@@ -8,14 +8,15 @@ You can download the sample data at http://www.py4e.com/code3/mbox-short.txt whe
 # Use the file name mbox-short.txt as the file name
 fname = input("Enter file name: ")
 fh = open(fname)
+total = 0
 count = 0
-s = 0
 for line in fh:
-    if not line.startswith("X-DSPAM-Confidence:") :
-        continue
-    pos = line.find('0')
-    s += float(line[pos:pos+6])
-    count += 1
-    average = s / count
-print("Average spam confidence:", average)
+    if not line.startswith("X-DSPAM-Confidence:") : continue
+    else:
+        line = line.strip()
+        idx = line.find('0')  
+        num = float(line[idx:])
+        total += num
+        count += 1
+print("Average spam confidence:",total/count)
 
