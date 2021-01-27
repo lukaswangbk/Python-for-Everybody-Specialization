@@ -16,7 +16,6 @@ You do not need to save these files to your folder since your program will read 
 #Count: 50
 #Sum: 2259
 
-
 import urllib.request as ur
 import xml.etree.ElementTree as et
 
