@@ -34,6 +34,7 @@ import re
 from bs4 import BeautifulSoup
 
 current_repeat_count = 0
+name = None
 url = input('Enter URL: ')
 repeat_count = int(input('Enter count: '))
 position = int(input('Enter position: '))
@@ -45,8 +46,9 @@ def parse_html(url):
     tags = soup('a')
     return tags
 
-while current_repeat_count <= repeat_count:
-    print('Retrieving: ', url)
+print('Retrieving: ', url)
+
+while current_repeat_count < repeat_count:
     tags = parse_html(url)
     for index, item in enumerate(tags):
         if index == position - 1:
@@ -56,4 +58,5 @@ while current_repeat_count <= repeat_count:
         else:
             continue
     current_repeat_count += 1
-print(re.findall('known_by_(.+).html', url))
+    print('Retrieving: ', url)
+print(name)

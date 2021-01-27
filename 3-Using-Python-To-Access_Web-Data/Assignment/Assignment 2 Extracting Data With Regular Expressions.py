@@ -17,7 +17,6 @@ These links open in a new window. Make sure to save the file into the same folde
 #copy all content from "http://py4e-data.dr-chuck.net/regex_sum_1146870.txt" file and create text file then run following code
 
 
-
 import re
 
 sum = 0
@@ -32,5 +31,3 @@ for line in file:
             sum += int(number)
 
 print(sum)
-
-
