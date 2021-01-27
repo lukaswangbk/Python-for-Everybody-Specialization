@@ -10,11 +10,11 @@ You do not need to save these files to your folder since your program will read 
 
 # Enter the url to scrape -  http://py4e-data.dr-chuck.net/comments_1146872.html
 # Count  50
-# Sum  2893
+# Sum  2421
 
 
 import urllib.request as ur
-from bs4 import *
+from bs4 import BeautifulSoup
 
 url = input('Enter the url to scrape - ')
 
