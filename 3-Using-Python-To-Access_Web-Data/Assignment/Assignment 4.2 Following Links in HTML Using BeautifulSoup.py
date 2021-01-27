@@ -9,12 +9,12 @@ Sample problem: Start at http://py4e-data.dr-chuck.net/known_by_Fikret.html
 Find the link at position 3 (the first name is 1). Follow that link. Repeat this process 4 times. The answer is the last name that you retrieve.
 Sequence of names: Fikret Montgomery Mhairade Butchi Anayah 
 Last name in sequence: Anayah
-Actual problem: Start at: http://py4e-data.dr-chuck.net/known_by_Annick.html 
+Actual problem: Start at: http://py4e-data.dr-chuck.net/known_by_Warkhas.html
 Find the link at position 18 (the first name is 1). Follow that link. Repeat this process 7 times. The answer is the last name that you retrieve.
-Hint: The first character of the name of the last page that you will load is: M"""
+Hint: The first character of the name of the last page that you will load is: N
 '''
 
-# Enter URL: http://py4e-data.dr-chuck.net/known_by_Annick.html
+# Enter URL: http://py4e-data.dr-chuck.net/known_by_Warkhas.html
 # Enter count: 7
 # Enter position: 18
 # Retrieving:  http://py4e-data.dr-chuck.net/known_by_Annick.html
@@ -30,7 +30,8 @@ Hint: The first character of the name of the last page that you will load is: M"
 #Name: Mhea
 
 import urllib.request as ur
-from bs4 import *
+import re
+from bs4 import BeautifulSoup
 
 current_repeat_count = 0
 url = input('Enter URL: ')
@@ -44,7 +45,7 @@ def parse_html(url):
     tags = soup('a')
     return tags
 
-while current_repeat_count < repeat_count:
+while current_repeat_count <= repeat_count:
     print('Retrieving: ', url)
     tags = parse_html(url)
     for index, item in enumerate(tags):
@@ -55,4 +56,4 @@ while current_repeat_count < repeat_count:
         else:
             continue
     current_repeat_count += 1
-print('Last Url: ', url)
+print(re.findall('known_by_(.+).html', url))
