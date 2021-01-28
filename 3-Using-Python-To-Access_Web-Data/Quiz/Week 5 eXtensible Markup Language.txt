@@ -1,8 +1,11 @@
-1.What is the name of the Python 2.x library to parse XML data?
-==> xml.etree.ElementTree
+1.What is "serialization" when we are talking about web services?
+==> The act of taking data stored in a program and formatting it so it can be sent across the network
 
-2.What is the method to cause Python to parse XML that is stored in a string?
-==> fromstring()
+2.Which of the following are not commonly used serialization formats?
+==>
+-TCP
+-HTTP
+-Dictionaries
 
 3.In this XML, which are the "complex elements"?
 <people>
@@ -63,30 +66,3 @@
 
 10.Which of the following dates is in ISO8601 format?
 ==> 2002-05-30T09:30:10Z
-
-11.What is "serialization" when we are talking about web services?
-==> The act of taking data stored in a program and formatting it so it can be sent across the network
-
-12. Which of the following are not commonly used serialization formats?
-==>
--HTTP
--dictionaries
--TCP
-
-13.For this XML Schema:
-<xs:complexType name=”person”>
-  <xs:sequence>
-    <xs:element name="lastname" type="xs:string"/>
-    <xs:element name="age" type="xs:integer"/>
-    <xs:element name="dateborn" type="xs:date"/>
-  </xs:sequence>
-</xs:complexType>
-And this XML,
-<person>
-   <lastname>Severance</lastname>
-   <Age>17</Age>
-   <dateborn>2001-04-17</dateborn>
-</person>
-
-Which tag is incorrect?
-==> Age
