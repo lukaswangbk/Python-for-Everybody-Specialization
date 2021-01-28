@@ -58,8 +58,7 @@
 ==> To establish a contract as to what is valid XML
 
 8.If you were building an XML Schema and wanted to limit the values allowed in an xs:string field to only those in a particular list, what XML tag would you use in your XML Schema definition?
-==> xs:element (wrong)
-==> xs:sequence
+==> xs:enumeration
 
 9.What is a good time zone to use when computers are exchanging data over APIs?
 ==> Universal Time / GMT
