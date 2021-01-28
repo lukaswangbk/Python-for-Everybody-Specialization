@@ -5,27 +5,25 @@ In this assignment you will write a Python program somewhat similar to http://ww
 We provide two files for this assignment. One is a sample file where we give you the sum for your testing and the other is the actual data you need to process for the assignment.
 
 Sample data: http://py4e-data.dr-chuck.net/comments_42.json (Sum=2553)
-Actual data: http://py4e-data.dr-chuck.net/comments_97411.json (Sum ends with 65)
+Actual data: http://py4e-data.dr-chuck.net/comments_1146875.json (Sum ends with 62)
 You do not need to save these files to your folder since your program will read the data directly from the URL. Note: Each student will have a distinct data url for the assignment - so only use your own data url for analysis.
 """
 '''
 
-#Enter location: http://py4e-data.dr-chuck.net/comments_97411.json
-#Retrieving  http://py4e-data.dr-chuck.net/comments_97411.json
-#Retrieved 2711 characters
+#Enter location: http://py4e-data.dr-chuck.net/comments_1146875.json
+#Retrieving http://py4e-data.dr-chuck.net/comments_1146875.json
+#Retrieved 2738 characters
 #Count: 50
-#Sum: 2365
+#Sum: 2662
 
 
 
 import urllib.request as ur
 import json
 
-# json_url = 'http://python-data.dr-chuck.net/comments_42.json'
-
 json_url = input("Enter location: ")
-print("Retrieving ", json_url)
-data = ur.urlopen(json_url).read().decode('utf-8')
+print("Retrieving", json_url)
+data = ur.urlopen(json_url).read().decode()
 print('Retrieved', len(data), 'characters')
 json_obj = json.loads(data)
 
