@@ -14,7 +14,7 @@ You do not need to save these files to your folder since your program will read 
 #Retrieving http://py4e-data.dr-chuck.net/comments_1146874.xml
 #Retrieved 4220 characters
 #Count: 50
-#Sum: 2259
+#Sum: 2398
 
 import urllib.request as ur
 import xml.etree.ElementTree as ET
