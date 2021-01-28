@@ -32,9 +32,9 @@ Make sure to retreive the data from the URL specified above and not the normal G
 '''
 
 #Enter location: Obninsk Technical University of Nuclear Power Engineering Russia
-#Retrieving http://python-data.dr-chuck.net/geojson?sensor=false&address=Obninsk+Technical+University+of+Nuclear+Power+Engineering+Russia
-#Retrieved 1770 characters
-#Place id ChIJ98gRfsDSykYRrQirpg0x418
+#Retrieving http://py4e-data.dr-chuck.net/json?address=Obninsk+Technical+University+of+Nuclear+Power+Engineering+Russia&key=42
+#Retrieved 2175 characters
+#Place id ChIJw7x2t5DNykYRDJnkWqhocSU
 
 
 
