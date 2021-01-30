@@ -29,7 +29,6 @@ CREATE TABLE Track (
 );
 ''')
 
-
 fname = input('Enter file name: ')
 if ( len(fname) < 1 ) : fname = 'Library.xml'
 
