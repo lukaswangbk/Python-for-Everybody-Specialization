@@ -1,9 +1,8 @@
 """
-
 To get credit for this assignment, perform the instructions below and enter the code you get here:
 
+(Hint: starts with XYZZY41616)
 
-(Hint: starts with 414)
 Instructions
 This application will read roster data in JSON format, parse the file, and then produce an SQLite database that contains a User, Course, and Member table and populate the tables from the data file.
 
@@ -13,103 +12,88 @@ Each student gets their own file for the assignment. Download this file and save
 
 Once you have made the necessary changes to the program and it has been run successfully reading the above JSON data, run the following SQL command:
 
-SELECT hex(User.name || Course.title || Member.role ) AS X FROM
-    User JOIN Member JOIN Course
+SELECT User.name,Course.title, Member.role FROM 
+    User JOIN Member JOIN Course 
     ON User.id = Member.user_id AND Member.course_id = Course.id
-    ORDER BY X
-Find the first row in the resulting record set and enter the long string that looks like 53656C696E613333.
-The first row in the resulting record set: ('414A736933333430',)
+    ORDER BY User.name DESC, Course.title DESC, Member.role DESC LIMIT 2;
+
+The output should look as follows:
+
+Zoubaeir|si334|0
+Zinto|si364|0
+
+Once that query gives the correct data, run this query:
+
+SELECT 'XYZZY' || hex(User.name || Course.title || Member.role ) AS X FROM 
+    User JOIN Member JOIN Course 
+    ON User.id = Member.user_id AND Member.course_id = Course.id
+    ORDER BY X LIMIT 1;
+
+You should get one row with a string that looks like XYZZY53656C696E613333.
 """
 
 
 import json
 import sqlite3
 
-#PART 1: Creating the database
-dbname = "roster.sqlite"
-conn = sqlite3.connect(dbname)
+conn = sqlite3.connect('rosterdb.sqlite')
 cur = conn.cursor()
 
+# Do some setup
 cur.executescript('''
-	DROP TABLE IF EXISTS User;
-	DROP TABLE IF EXISTS Course;
-	DROP TABLE IF EXISTS Member;
-	CREATE TABLE User (
-		id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-		name TEXT UNIQUE 
-	);
-	CREATE TABLE Course (
-		id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-		title TEXT UNIQUE
-	);
-	CREATE TABLE Member (
-		user_id INTEGER,
-		course_id INTEGER,
-		role INTEGER,
-		PRIMARY KEY(user_id, course_id)
-	)
+DROP TABLE IF EXISTS User;
+DROP TABLE IF EXISTS Member;
+DROP TABLE IF EXISTS Course;
+
+CREATE TABLE User (
+    id     INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+    name   TEXT UNIQUE
+);
+
+CREATE TABLE Course (
+    id     INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+    title  TEXT UNIQUE
+);
+
+CREATE TABLE Member (
+    user_id     INTEGER,
+    course_id   INTEGER,
+    role        INTEGER,
+    PRIMARY KEY (user_id, course_id)
+)
 ''')
-#Note: if we don't add UNIQUE after "User.name" and "Course.title", 
-#the IGNORE statement won't work and therefore we'll have duplicates
 
+fname = input('Enter file name: ')
+if len(fname) < 1:
+    fname = 'roster_data.json'
 
-#PART 2: DESERIALIZING THE data
-#The JSON data we're going to process is stored in an array form, with each
-#item being also an array of three elements: one corresponding to the username 
-#one corresponding to the course name, and one indicating if the user is instructor
-#None of them has any field title. 
+# [
+#   [ "Charley", "si110", 1 ],
+#   [ "Mea", "si110", 0 ],
 
-filename = "roster_data.json"
-jsondata = open(filename)
-data = json.load(jsondata)
+str_data = open(fname).read()
+json_data = json.loads(str_data)
 
-#PART 3: INSERTING DATA
-for entry in data:
-	user = entry[0]
-	course = entry[1]
-	instructor = entry[2]
+for entry in json_data:
 
-	#Inserting user
-	user_statement = """INSERT OR IGNORE INTO User(name) VALUES( ? )"""
-	SQLparams = (user, )
-	cur.execute(user_statement, SQLparams)
+    name = entry[0]
+    title = entry[1]
+    role = entry[2]
 
-	#Inserting course
-	course_statement = """INSERT OR IGNORE INTO Course(title) VALUES( ? )"""
-	SQLparams = (course, )
-	cur.execute(course_statement, SQLparams)
+    print((name, title, role))
 
-	#Getting user and course id
-	courseID_statement = """SELECT id FROM Course WHERE title = ?"""
-	SQLparams = (course, )
-	cur.execute(courseID_statement, SQLparams)
-	courseID = cur.fetchone()[0]
+    cur.execute('''INSERT OR IGNORE INTO User (name)
+        VALUES ( ? )''', ( name, ) )
+    cur.execute('SELECT id FROM User WHERE name = ? ', (name, ))
+    user_id = cur.fetchone()[0]
 
-	userID_statement = """SELECT id FROM User WHERE name = ?"""
-	SQLparams = (user, )
-	cur.execute(userID_statement, SQLparams)
-	userID = cur.fetchone()[0]
+    cur.execute('''INSERT OR IGNORE INTO Course (title)
+        VALUES ( ? )''', ( title, ) )
+    cur.execute('SELECT id FROM Course WHERE title = ? ', (title, ))
+    course_id = cur.fetchone()[0]
 
-	#Inserting the entry
-	member_statement = """INSERT INTO Member(user_id, course_id, role)
-		VALUES(?, ?, ?)"""
-	SQLparams = (userID, courseID, instructor)
-	cur.execute(member_statement, SQLparams)
+    cur.execute('''INSERT OR REPLACE INTO Member
+        (user_id, course_id, role) VALUES ( ?, ?, ? )''',
+        ( user_id, course_id, role ) )
 
-#Saving the changes
-conn.commit()
-
-#PART 4: Testing and obtaining the results
-test_statement = """
-SELECT hex(User.name || Course.title || Member.role ) AS X FROM 
-    User JOIN Member JOIN Course 
-    ON User.id = Member.user_id AND Member.course_id = Course.id
-    ORDER BY X
-"""
-cur.execute(test_statement)
-result = cur.fetchone()
-print("The first row in the resulting record set: " + str(result))
-
-#Closing the connection
-cur.close()
-conn.close()
+    conn.commit()
