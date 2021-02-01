@@ -74,7 +74,7 @@ for line in fh:
     cur.execute('''INSERT INTO Locations (address, geodata)
             VALUES ( ?, ? )''', (memoryview(address.encode()), memoryview(data.encode()) ) )
     conn.commit()
-    if count % 10 == 0 :
+    if count % 1000 == 0 :
         print('Pausing for a bit...')
         time.sleep(5)
 
